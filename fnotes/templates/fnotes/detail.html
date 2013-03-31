@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if entry %}
+<h1>{{ entry.title }}</h1>
+<p><a href="{% url fnotes_edit entry.id %}">редактировать</a></p>
+<p>{{ entry.time }}</p>
+<p>{{ entry.content }}</p>
+<ul>
+{% for tag in entry.tags.all %}
+<li><a href="{% url fnotes_tag tag.id %}">{{ tag.title }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

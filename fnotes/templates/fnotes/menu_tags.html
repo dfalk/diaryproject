@@ -1,0 +1,5 @@
+<ul>
+{% for tag in tag_list %}
+<li><a href="{% url fnotes_tag tag.id %}">{{ tag.title }}</a></li>
+{% endfor %}
+</ul>

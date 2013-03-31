@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Последние заметки</h1>
+{% if latest_entry_list %}
+    <ul>
+    {% for entry in latest_entry_list %}
+        <li>{{ entry.time|date:"d.m.Y D H:i" }} <a href="{% url fnotes_detail entry.id %}">{{ entry.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No entries are available.</p>
+{% endif %}
+{% endblock %}

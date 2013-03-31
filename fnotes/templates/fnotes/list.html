@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load pagination_tags %}
+
+{% block content %}
+<h1>{{ tag.title }}</h1>
+{% if entry_list %}
+    {% paginate %}
+    {% autopaginate entry_list 25 %}
+    <ul>
+    {% for entry in entry_list %}
+        <li>{{ entry.time|date:"d.m.Y D H:i" }} <a href="{% url fnotes_detail entry.id %}">{{ entry.title }}</a></li>
+    {% endfor %}
+    </ul>
+    {% paginate %}
+{% else %}
+    <p>No entries are available.</p>
+{% endif %}
+{% endblock %}

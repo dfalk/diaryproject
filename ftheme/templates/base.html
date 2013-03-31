@@ -1,0 +1,53 @@
+{% load fnotes_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FNotes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <style>
+    #sitetitle {
+        font: 48px Georgia;
+        margin: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    {% block header %}
+    <div id="sitetitle">
+    <a href="{% url index %}">FNotes</a>
+    </div>
+    {% endblock %}
+    </div>
+
+    <div class="container">
+    {% block nav %}
+    <ul class="nav nav-tabs">
+    <li><a href="{% url index %}">Главная</a></li>
+    </ul>
+    {% endblock %}
+    </div>
+
+    <div class="container">
+    <div class="row">
+        <div class="span8">
+        {% block content %}
+        <h1>Hello, world!</h1>
+        {% endblock %}
+        </div>
+        <div class="span4">
+        <h3>Админ</h3>
+        <a href="{% url fnotes_new %}">Добавить</a>
+        <h3>Теги</h3>
+        {% notes_tags %}
+        </div>
+    </div>
+    </div>
+
+    <script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+</body>
+</html>
